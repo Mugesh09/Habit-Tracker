@@ -44,3 +44,4 @@ class HabitRepository(
         HabitWidget().updateAll(appContext)
     }
 }
+import androidx.glance.appwidget.updateAll
