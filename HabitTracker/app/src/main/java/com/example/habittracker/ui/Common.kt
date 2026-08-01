@@ -1,0 +1,8 @@
+package com.example.habittracker.ui
+
+val EMOJIS = listOf(
+    "\uD83C\uDFAF", "\uD83C\uDFC3", "\uD83D\uDCA7", "\uD83D\uDCDA", "\uD83E\uDDD8", "\uD83E\uDD57",
+    "\uD83D\uDE34", "\uD83D\uDCAA", "\u270D\uFE0F", "\uD83C\uDF31", "\u2615", "\uD83C\uDFA8",
+    "\uD83D\uDC8A", "\uD83E\uDDB7", "\uD83E\uDDF9", "\uD83D\uDCF1", "\uD83C\uDFB8", "\uD83D\uDE4F",
+    "\uD83E\uDDE0", "\uD83C\uDF4E", "\uD83D\uDEB6", "\uD83D\uDECF\uFE0F", "\uD83D\uDCB0", "\uD83C\uDFB5"
+)
