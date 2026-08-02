@@ -20,7 +20,6 @@ import androidx.glance.layout.Box
 import androidx.glance.layout.Column
 import androidx.glance.layout.Row
 import androidx.glance.layout.Spacer
-import androidx.glance.layout.defaultWeight
 import androidx.glance.layout.fillMaxSize
 import androidx.glance.layout.fillMaxWidth
 import androidx.glance.layout.height
@@ -35,9 +34,8 @@ import com.example.habittracker.Graph
 import com.example.habittracker.data.Habit
 
 private val Ink = Color(0xFF37352F)
-private val InkLight = Color(0xCC37352F)
 private val InkFaint = Color(0x7337352F)
-private val Track = Color(0x1737352F)
+private val Track = Color(0x1F37352F)
 
 val habitIdKey = ActionParameters.Key<Long>("habitId")
 
@@ -66,9 +64,15 @@ private fun WidgetContent(habits: List<Habit>, doneIds: Set<Long>) {
             modifier = GlanceModifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Text("Today", style = TextStyle(color = ColorProvider(Ink), fontSize = 13.sp, fontWeight = FontWeight.Bold))
-            Spacer(GlanceModifier.defaultWeight())
-            Text("$doneCount/${habits.size}", style = TextStyle(color = ColorProvider(InkFaint), fontSize = 12.sp, fontWeight = FontWeight.Bold))
+            Text(
+                "Today",
+                style = TextStyle(color = ColorProvider(Ink), fontSize = 13.sp, fontWeight = FontWeight.Bold)
+            )
+            Spacer(GlanceModifier.width(8.dp))
+            Text(
+                "$doneCount/${habits.size}",
+                style = TextStyle(color = ColorProvider(InkFaint), fontSize = 12.sp, fontWeight = FontWeight.Bold)
+            )
         }
         Spacer(GlanceModifier.height(10.dp))
 
@@ -81,19 +85,6 @@ private fun WidgetContent(habits: List<Habit>, doneIds: Set<Long>) {
                     .clickable(actionRunCallback<ToggleHabitAction>(actionParametersOf(habitIdKey to habit.id))),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text(habit.emoji, style = TextStyle(fontSize = 14.sp))
-                Spacer(GlanceModifier.width(9.dp))
-                Text(
-                    habit.name,
-                    maxLines = 1,
-                    style = TextStyle(
-                        color = ColorProvider(if (done) InkFaint else Ink),
-                        fontSize = 13.sp,
-                        fontWeight = FontWeight.Medium
-                    ),
-                    modifier = GlanceModifier.defaultWeight()
-                )
-                Spacer(GlanceModifier.width(8.dp))
                 Box(
                     modifier = GlanceModifier
                         .size(18.dp)
@@ -101,8 +92,23 @@ private fun WidgetContent(habits: List<Habit>, doneIds: Set<Long>) {
                         .background(if (done) Ink else Track),
                     contentAlignment = Alignment.Center
                 ) {
-                    if (done) Text("\u2713", style = TextStyle(color = ColorProvider(Color.White), fontSize = 12.sp, fontWeight = FontWeight.Bold))
+                    if (done) {
+                        Text(
+                            "\u2713",
+                            style = TextStyle(color = ColorProvider(Color.White), fontSize = 12.sp, fontWeight = FontWeight.Bold)
+                        )
+                    }
                 }
+                Spacer(GlanceModifier.width(10.dp))
+                Text(
+                    "${habit.emoji}  ${habit.name}",
+                    maxLines = 1,
+                    style = TextStyle(
+                        color = ColorProvider(if (done) InkFaint else Ink),
+                        fontSize = 13.sp,
+                        fontWeight = FontWeight.Medium
+                    )
+                )
             }
         }
     }
