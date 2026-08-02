@@ -1,6 +1,7 @@
 package com.example.habittracker.data
 
 import android.content.Context
+import androidx.glance.appwidget.updateAll
 import com.example.habittracker.widget.HabitWidget
 import kotlinx.coroutines.flow.Flow
 import java.time.LocalDate
@@ -44,4 +45,3 @@ class HabitRepository(
         HabitWidget().updateAll(appContext)
     }
 }
-import androidx.glance.appwidget.updateAll
